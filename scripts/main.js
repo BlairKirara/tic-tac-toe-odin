@@ -8,17 +8,31 @@ function createPlayer(name, symbol) {
     return { name, symbol };
 }
 
+
+
 const gameInstance = (function () {
     let game = {};
     game.turn = 0;
     game.winner = 'none';
 
-    let name = prompt("Please write your name: ");
-    let symbol = prompt("Please choose your symbol: ");
-    player1 = createPlayer(name, symbol);
-    name = prompt("Please write your name: ");
-    symbol = prompt("Please choose your symbol: ");
-    player2 = createPlayer(name, symbol);
+    function getPlayers() {
+        let p1_name = document.getElementById("p1-name").value;
+        let p2_name = document.getElementById("p2-name").value;
+        let p1_symbol = document.getElementById("p1-symbol").value;
+        if (p1_symbol == 'x') {
+            let p2_symbol = 'y'
+        } else {
+            let p2_symbol = 'x';
+        }
+        player1 = createPlayer(p1_name, p1_symbol);
+        player2 = createPlayer(p2_name, p2_symbol);
+    }
+
+    // let name = prompt("Please write your name: ");
+    // let symbol = prompt("Please choose your symbol: ");
+    // name = prompt("Please write your name: ");
+    // symbol = prompt("Please choose your symbol: ");
+
 
     game.checkCombination = function () {
         for (var i = 1; i <= 9; i++) {
